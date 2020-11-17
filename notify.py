@@ -5,6 +5,8 @@ import time
 import json
 
 def send_request(url, auth):
+    if 'http://' in url:
+        url = 'https://' + url.split('http://')[1]
     return requests.get(url,
                         auth=auth,
                         headers={'Accept': 'application/json'}
